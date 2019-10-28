@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tuling.purchasingsystem.mapper.ContractMapper" >
+  <resultMap id="BaseResultMap" type="com.tuling.purchasingsystem.entity.Contract" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CONT_NUM" property="contNum" jdbcType="VARCHAR" />
+    <result column="BUYER" property="buyer" jdbcType="VARCHAR" />
+    <result column="SELLER" property="seller" jdbcType="VARCHAR" />
+    <result column="SUPPLIER_NUM" property="supplierNum" jdbcType="VARCHAR" />
+    <result column="CONT_DATE" property="contDate" jdbcType="TIMESTAMP" />
+    <result column="CONT_TYPE" property="contType" jdbcType="VARCHAR" />
+    <result column="STOCK_TYPE" property="stockType" jdbcType="VARCHAR" />
+    <result column="CONT_ITEM" property="contItem" jdbcType="VARCHAR" />
+    <result column="MONEY" property="money" jdbcType="VARCHAR" />
+    <result column="TAX_RATE" property="taxRate" jdbcType="VARCHAR" />
+    <result column="WRAP_BACK" property="wrapBack" jdbcType="VARCHAR" />
+    <result column="VERIFY_STAND" property="verifyStand" jdbcType="VARCHAR" />
+    <result column="MODE" property="mode" jdbcType="VARCHAR" />
+    <result column="PAY_COND" property="payCond" jdbcType="VARCHAR" />
+    <result column="VERIFY_DATE" property="verifyDate" jdbcType="TIMESTAMP" />
+    <result column="QUALITY_STAND" property="qualityStand" jdbcType="VARCHAR" />
+    <result column="STANDARD_NO" property="standardNo" jdbcType="VARCHAR" />
+    <result column="PLACE" property="place" jdbcType="VARCHAR" />
+    <result column="CONT_PRICE" property="contPrice" jdbcType="DECIMAL" />
+    <result column="TRANSPORT" property="transport" jdbcType="VARCHAR" />
+    <result column="PAY_WAY" property="payWay" jdbcType="VARCHAR" />
+    <result column="OUT_PERM" property="outPerm" jdbcType="VARCHAR" />
+    <result column="OUT_DAY" property="outDay" jdbcType="VARCHAR" />
+    <result column="WRAP_REQUIRE" property="wrapRequire" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CONT_NUM, BUYER, SELLER, SUPPLIER_NUM, CONT_DATE, CONT_TYPE, STOCK_TYPE, CONT_ITEM, 
+    MONEY, TAX_RATE, WRAP_BACK, VERIFY_STAND, MODE, PAY_COND, VERIFY_DATE, QUALITY_STAND, 
+    STANDARD_NO, PLACE, CONT_PRICE, TRANSPORT, PAY_WAY, OUT_PERM, OUT_DAY, WRAP_REQUIRE, 
+    REMARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from contract
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from contract
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.tuling.purchasingsystem.entity.Contract" >
+    insert into contract (ID, CONT_NUM, BUYER, 
+      SELLER, SUPPLIER_NUM, CONT_DATE, 
+      CONT_TYPE, STOCK_TYPE, CONT_ITEM, 
+      MONEY, TAX_RATE, WRAP_BACK, 
+      VERIFY_STAND, MODE, PAY_COND, 
+      VERIFY_DATE, QUALITY_STAND, STANDARD_NO, 
+      PLACE, CONT_PRICE, TRANSPORT, 
+      PAY_WAY, OUT_PERM, OUT_DAY, 
+      WRAP_REQUIRE, REMARK)
+    values (#{id,jdbcType=BIGINT}, #{contNum,jdbcType=VARCHAR}, #{buyer,jdbcType=VARCHAR}, 
+      #{seller,jdbcType=VARCHAR}, #{supplierNum,jdbcType=VARCHAR}, #{contDate,jdbcType=TIMESTAMP}, 
+      #{contType,jdbcType=VARCHAR}, #{stockType,jdbcType=VARCHAR}, #{contItem,jdbcType=VARCHAR}, 
+      #{money,jdbcType=VARCHAR}, #{taxRate,jdbcType=VARCHAR}, #{wrapBack,jdbcType=VARCHAR}, 
+      #{verifyStand,jdbcType=VARCHAR}, #{mode,jdbcType=VARCHAR}, #{payCond,jdbcType=VARCHAR}, 
+      #{verifyDate,jdbcType=TIMESTAMP}, #{qualityStand,jdbcType=VARCHAR}, #{standardNo,jdbcType=VARCHAR}, 
+      #{place,jdbcType=VARCHAR}, #{contPrice,jdbcType=DECIMAL}, #{transport,jdbcType=VARCHAR}, 
+      #{payWay,jdbcType=VARCHAR}, #{outPerm,jdbcType=VARCHAR}, #{outDay,jdbcType=VARCHAR}, 
+      #{wrapRequire,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tuling.purchasingsystem.entity.Contract" >
+    insert into contract
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="contNum != null" >
+        CONT_NUM,
+      </if>
+      <if test="buyer != null" >
+        BUYER,
+      </if>
+      <if test="seller != null" >
+        SELLER,
+      </if>
+      <if test="supplierNum != null" >
+        SUPPLIER_NUM,
+      </if>
+      <if test="contDate != null" >
+        CONT_DATE,
+      </if>
+      <if test="contType != null" >
+        CONT_TYPE,
+      </if>
+      <if test="stockType != null" >
+        STOCK_TYPE,
+      </if>
+      <if test="contItem != null" >
+        CONT_ITEM,
+      </if>
+      <if test="money != null" >
+        MONEY,
+      </if>
+      <if test="taxRate != null" >
+        TAX_RATE,
+      </if>
+      <if test="wrapBack != null" >
+        WRAP_BACK,
+      </if>
+      <if test="verifyStand != null" >
+        VERIFY_STAND,
+      </if>
+      <if test="mode != null" >
+        MODE,
+      </if>
+      <if test="payCond != null" >
+        PAY_COND,
+      </if>
+      <if test="verifyDate != null" >
+        VERIFY_DATE,
+      </if>
+      <if test="qualityStand != null" >
+        QUALITY_STAND,
+      </if>
+      <if test="standardNo != null" >
+        STANDARD_NO,
+      </if>
+      <if test="place != null" >
+        PLACE,
+      </if>
+      <if test="contPrice != null" >
+        CONT_PRICE,
+      </if>
+      <if test="transport != null" >
+        TRANSPORT,
+      </if>
+      <if test="payWay != null" >
+        PAY_WAY,
+      </if>
+      <if test="outPerm != null" >
+        OUT_PERM,
+      </if>
+      <if test="outDay != null" >
+        OUT_DAY,
+      </if>
+      <if test="wrapRequire != null" >
+        WRAP_REQUIRE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="contNum != null" >
+        #{contNum,jdbcType=VARCHAR},
+      </if>
+      <if test="buyer != null" >
+        #{buyer,jdbcType=VARCHAR},
+      </if>
+      <if test="seller != null" >
+        #{seller,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNum != null" >
+        #{supplierNum,jdbcType=VARCHAR},
+      </if>
+      <if test="contDate != null" >
+        #{contDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contType != null" >
+        #{contType,jdbcType=VARCHAR},
+      </if>
+      <if test="stockType != null" >
+        #{stockType,jdbcType=VARCHAR},
+      </if>
+      <if test="contItem != null" >
+        #{contItem,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRate != null" >
+        #{taxRate,jdbcType=VARCHAR},
+      </if>
+      <if test="wrapBack != null" >
+        #{wrapBack,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyStand != null" >
+        #{verifyStand,jdbcType=VARCHAR},
+      </if>
+      <if test="mode != null" >
+        #{mode,jdbcType=VARCHAR},
+      </if>
+      <if test="payCond != null" >
+        #{payCond,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyDate != null" >
+        #{verifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qualityStand != null" >
+        #{qualityStand,jdbcType=VARCHAR},
+      </if>
+      <if test="standardNo != null" >
+        #{standardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="contPrice != null" >
+        #{contPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="transport != null" >
+        #{transport,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="outPerm != null" >
+        #{outPerm,jdbcType=VARCHAR},
+      </if>
+      <if test="outDay != null" >
+        #{outDay,jdbcType=VARCHAR},
+      </if>
+      <if test="wrapRequire != null" >
+        #{wrapRequire,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tuling.purchasingsystem.entity.Contract" >
+    update contract
+    <set >
+      <if test="contNum != null" >
+        CONT_NUM = #{contNum,jdbcType=VARCHAR},
+      </if>
+      <if test="buyer != null" >
+        BUYER = #{buyer,jdbcType=VARCHAR},
+      </if>
+      <if test="seller != null" >
+        SELLER = #{seller,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNum != null" >
+        SUPPLIER_NUM = #{supplierNum,jdbcType=VARCHAR},
+      </if>
+      <if test="contDate != null" >
+        CONT_DATE = #{contDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contType != null" >
+        CONT_TYPE = #{contType,jdbcType=VARCHAR},
+      </if>
+      <if test="stockType != null" >
+        STOCK_TYPE = #{stockType,jdbcType=VARCHAR},
+      </if>
+      <if test="contItem != null" >
+        CONT_ITEM = #{contItem,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        MONEY = #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRate != null" >
+        TAX_RATE = #{taxRate,jdbcType=VARCHAR},
+      </if>
+      <if test="wrapBack != null" >
+        WRAP_BACK = #{wrapBack,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyStand != null" >
+        VERIFY_STAND = #{verifyStand,jdbcType=VARCHAR},
+      </if>
+      <if test="mode != null" >
+        MODE = #{mode,jdbcType=VARCHAR},
+      </if>
+      <if test="payCond != null" >
+        PAY_COND = #{payCond,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyDate != null" >
+        VERIFY_DATE = #{verifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qualityStand != null" >
+        QUALITY_STAND = #{qualityStand,jdbcType=VARCHAR},
+      </if>
+      <if test="standardNo != null" >
+        STANDARD_NO = #{standardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        PLACE = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="contPrice != null" >
+        CONT_PRICE = #{contPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="transport != null" >
+        TRANSPORT = #{transport,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        PAY_WAY = #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="outPerm != null" >
+        OUT_PERM = #{outPerm,jdbcType=VARCHAR},
+      </if>
+      <if test="outDay != null" >
+        OUT_DAY = #{outDay,jdbcType=VARCHAR},
+      </if>
+      <if test="wrapRequire != null" >
+        WRAP_REQUIRE = #{wrapRequire,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tuling.purchasingsystem.entity.Contract" >
+    update contract
+    set CONT_NUM = #{contNum,jdbcType=VARCHAR},
+      BUYER = #{buyer,jdbcType=VARCHAR},
+      SELLER = #{seller,jdbcType=VARCHAR},
+      SUPPLIER_NUM = #{supplierNum,jdbcType=VARCHAR},
+      CONT_DATE = #{contDate,jdbcType=TIMESTAMP},
+      CONT_TYPE = #{contType,jdbcType=VARCHAR},
+      STOCK_TYPE = #{stockType,jdbcType=VARCHAR},
+      CONT_ITEM = #{contItem,jdbcType=VARCHAR},
+      MONEY = #{money,jdbcType=VARCHAR},
+      TAX_RATE = #{taxRate,jdbcType=VARCHAR},
+      WRAP_BACK = #{wrapBack,jdbcType=VARCHAR},
+      VERIFY_STAND = #{verifyStand,jdbcType=VARCHAR},
+      MODE = #{mode,jdbcType=VARCHAR},
+      PAY_COND = #{payCond,jdbcType=VARCHAR},
+      VERIFY_DATE = #{verifyDate,jdbcType=TIMESTAMP},
+      QUALITY_STAND = #{qualityStand,jdbcType=VARCHAR},
+      STANDARD_NO = #{standardNo,jdbcType=VARCHAR},
+      PLACE = #{place,jdbcType=VARCHAR},
+      CONT_PRICE = #{contPrice,jdbcType=DECIMAL},
+      TRANSPORT = #{transport,jdbcType=VARCHAR},
+      PAY_WAY = #{payWay,jdbcType=VARCHAR},
+      OUT_PERM = #{outPerm,jdbcType=VARCHAR},
+      OUT_DAY = #{outDay,jdbcType=VARCHAR},
+      WRAP_REQUIRE = #{wrapRequire,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

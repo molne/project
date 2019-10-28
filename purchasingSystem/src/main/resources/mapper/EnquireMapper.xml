@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tuling.purchasingsystem.mapper.EnquireMapper" >
+  <resultMap id="BaseResultMap" type="com.tuling.purchasingsystem.entity.Enquire" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="ENQUIRE_NUM" property="enquireNum" jdbcType="VARCHAR" />
+    <result column="ENQUIRE_NAME" property="enquireName" jdbcType="VARCHAR" />
+    <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+    <result column="LINKMAN" property="linkman" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="FAX" property="fax" jdbcType="VARCHAR" />
+    <result column="ZIP" property="zip" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ENQUIRE_NUM, ENQUIRE_NAME, COMPANY, LINKMAN, ADDRESS, PHONE, FAX, ZIP, EMAIL, 
+    END_DATE, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from enquire
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from enquire
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.tuling.purchasingsystem.entity.Enquire" >
+    insert into enquire (ID, ENQUIRE_NUM, ENQUIRE_NAME, 
+      COMPANY, LINKMAN, ADDRESS, 
+      PHONE, FAX, ZIP, EMAIL, 
+      END_DATE, REMARK)
+    values (#{id,jdbcType=BIGINT}, #{enquireNum,jdbcType=VARCHAR}, #{enquireName,jdbcType=VARCHAR}, 
+      #{company,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{endDate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tuling.purchasingsystem.entity.Enquire" >
+    insert into enquire
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="enquireNum != null" >
+        ENQUIRE_NUM,
+      </if>
+      <if test="enquireName != null" >
+        ENQUIRE_NAME,
+      </if>
+      <if test="company != null" >
+        COMPANY,
+      </if>
+      <if test="linkman != null" >
+        LINKMAN,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="fax != null" >
+        FAX,
+      </if>
+      <if test="zip != null" >
+        ZIP,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="enquireNum != null" >
+        #{enquireNum,jdbcType=VARCHAR},
+      </if>
+      <if test="enquireName != null" >
+        #{enquireName,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tuling.purchasingsystem.entity.Enquire" >
+    update enquire
+    <set >
+      <if test="enquireNum != null" >
+        ENQUIRE_NUM = #{enquireNum,jdbcType=VARCHAR},
+      </if>
+      <if test="enquireName != null" >
+        ENQUIRE_NAME = #{enquireName,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        COMPANY = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        LINKMAN = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        FAX = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        ZIP = #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tuling.purchasingsystem.entity.Enquire" >
+    update enquire
+    set ENQUIRE_NUM = #{enquireNum,jdbcType=VARCHAR},
+      ENQUIRE_NAME = #{enquireName,jdbcType=VARCHAR},
+      COMPANY = #{company,jdbcType=VARCHAR},
+      LINKMAN = #{linkman,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      FAX = #{fax,jdbcType=VARCHAR},
+      ZIP = #{zip,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

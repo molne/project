@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tuling.purchasingsystem.mapper.StockSupplierMapper" >
+  <resultMap id="BaseResultMap" type="com.tuling.purchasingsystem.entity.StockSupplier" >
+    <result column="STOCK_ID" property="stockId" jdbcType="BIGINT" />
+    <result column="SUPPLIER_ID" property="supplierId" jdbcType="BIGINT" />
+  </resultMap>
+  <insert id="insert" parameterType="com.tuling.purchasingsystem.entity.StockSupplier" >
+    insert into stock_supplier (STOCK_ID, SUPPLIER_ID)
+    values (#{stockId,jdbcType=BIGINT}, #{supplierId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tuling.purchasingsystem.entity.StockSupplier" >
+    insert into stock_supplier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stockId != null" >
+        STOCK_ID,
+      </if>
+      <if test="supplierId != null" >
+        SUPPLIER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stockId != null" >
+        #{stockId,jdbcType=BIGINT},
+      </if>
+      <if test="supplierId != null" >
+        #{supplierId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

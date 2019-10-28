@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/purchasing_system2?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+
+  thymeleaf:
+    #消除页面缓存
+    cache: false
+  #设置日期
+  mvc:
+    date-format: yyyy-MM-dd
+  jackson:
+    date-format: yyyy-MM-dd
+    serialization:
+      indent-output: true
+    #设置时区
+    time-zone: GMT+8
+mybatis:
+  type-aliases-package: com.tuling.purchasingsystem.entity
+  mapper-locations: classpath:mapper/*.xml
+

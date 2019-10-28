@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tuling.purchasingsystem.mapper.StockMapper" >
+  <resultMap id="BaseResultMap" type="com.tuling.purchasingsystem.entity.Stock" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="STOCK_NUM" property="stockNum" jdbcType="VARCHAR" />
+    <result column="STOCK_NAME" property="stockName" jdbcType="VARCHAR" />
+    <result column="AUTHOR_ID" property="authorId" jdbcType="VARCHAR" />
+    <result column="AUTHOR" property="author" jdbcType="VARCHAR" />
+    <result column="STOCK_TYPE" property="stockType" jdbcType="VARCHAR" />
+    <result column="BUDGET" property="budget" jdbcType="DECIMAL" />
+    <result column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="SUBMIT_DATE" property="submitDate" jdbcType="TIMESTAMP" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="LEADER_ID" property="leaderId" jdbcType="VARCHAR" />
+    <result column="LEADER" property="leader" jdbcType="VARCHAR" />
+    <result column="LEAD_AGREE" property="leadAgree" jdbcType="VARCHAR" />
+    <result column="LEAD_OPINION" property="leadOpinion" jdbcType="VARCHAR" />
+    <result column="LEAD_DATE" property="leadDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, STOCK_NUM, STOCK_NAME, AUTHOR_ID, AUTHOR, STOCK_TYPE, BUDGET, START_DATE, END_DATE, 
+    SUBMIT_DATE, REMARK, LEADER_ID, LEADER, LEAD_AGREE, LEAD_OPINION, LEAD_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from stock
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from stock
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.tuling.purchasingsystem.entity.Stock" >
+    insert into stock (ID, STOCK_NUM, STOCK_NAME, 
+      AUTHOR_ID, AUTHOR, STOCK_TYPE, 
+      BUDGET, START_DATE, END_DATE, 
+      SUBMIT_DATE, REMARK, LEADER_ID, 
+      LEADER, LEAD_AGREE, LEAD_OPINION, 
+      LEAD_DATE)
+    values (#{id,jdbcType=BIGINT}, #{stockNum,jdbcType=VARCHAR}, #{stockName,jdbcType=VARCHAR}, 
+      #{authorId,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, #{stockType,jdbcType=VARCHAR}, 
+      #{budget,jdbcType=DECIMAL}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
+      #{submitDate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{leaderId,jdbcType=VARCHAR}, 
+      #{leader,jdbcType=VARCHAR}, #{leadAgree,jdbcType=VARCHAR}, #{leadOpinion,jdbcType=VARCHAR}, 
+      #{leadDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tuling.purchasingsystem.entity.Stock" >
+    insert into stock
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="stockNum != null" >
+        STOCK_NUM,
+      </if>
+      <if test="stockName != null" >
+        STOCK_NAME,
+      </if>
+      <if test="authorId != null" >
+        AUTHOR_ID,
+      </if>
+      <if test="author != null" >
+        AUTHOR,
+      </if>
+      <if test="stockType != null" >
+        STOCK_TYPE,
+      </if>
+      <if test="budget != null" >
+        BUDGET,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="submitDate != null" >
+        SUBMIT_DATE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="leaderId != null" >
+        LEADER_ID,
+      </if>
+      <if test="leader != null" >
+        LEADER,
+      </if>
+      <if test="leadAgree != null" >
+        LEAD_AGREE,
+      </if>
+      <if test="leadOpinion != null" >
+        LEAD_OPINION,
+      </if>
+      <if test="leadDate != null" >
+        LEAD_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="stockNum != null" >
+        #{stockNum,jdbcType=VARCHAR},
+      </if>
+      <if test="stockName != null" >
+        #{stockName,jdbcType=VARCHAR},
+      </if>
+      <if test="authorId != null" >
+        #{authorId,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="stockType != null" >
+        #{stockType,jdbcType=VARCHAR},
+      </if>
+      <if test="budget != null" >
+        #{budget,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitDate != null" >
+        #{submitDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null" >
+        #{leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null" >
+        #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="leadAgree != null" >
+        #{leadAgree,jdbcType=VARCHAR},
+      </if>
+      <if test="leadOpinion != null" >
+        #{leadOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="leadDate != null" >
+        #{leadDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tuling.purchasingsystem.entity.Stock" >
+    update stock
+    <set >
+      <if test="stockNum != null" >
+        STOCK_NUM = #{stockNum,jdbcType=VARCHAR},
+      </if>
+      <if test="stockName != null" >
+        STOCK_NAME = #{stockName,jdbcType=VARCHAR},
+      </if>
+      <if test="authorId != null" >
+        AUTHOR_ID = #{authorId,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        AUTHOR = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="stockType != null" >
+        STOCK_TYPE = #{stockType,jdbcType=VARCHAR},
+      </if>
+      <if test="budget != null" >
+        BUDGET = #{budget,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitDate != null" >
+        SUBMIT_DATE = #{submitDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null" >
+        LEADER_ID = #{leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null" >
+        LEADER = #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="leadAgree != null" >
+        LEAD_AGREE = #{leadAgree,jdbcType=VARCHAR},
+      </if>
+      <if test="leadOpinion != null" >
+        LEAD_OPINION = #{leadOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="leadDate != null" >
+        LEAD_DATE = #{leadDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tuling.purchasingsystem.entity.Stock" >
+    update stock
+    set STOCK_NUM = #{stockNum,jdbcType=VARCHAR},
+      STOCK_NAME = #{stockName,jdbcType=VARCHAR},
+      AUTHOR_ID = #{authorId,jdbcType=VARCHAR},
+      AUTHOR = #{author,jdbcType=VARCHAR},
+      STOCK_TYPE = #{stockType,jdbcType=VARCHAR},
+      BUDGET = #{budget,jdbcType=DECIMAL},
+      START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      SUBMIT_DATE = #{submitDate,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      LEADER_ID = #{leaderId,jdbcType=VARCHAR},
+      LEADER = #{leader,jdbcType=VARCHAR},
+      LEAD_AGREE = #{leadAgree,jdbcType=VARCHAR},
+      LEAD_OPINION = #{leadOpinion,jdbcType=VARCHAR},
+      LEAD_DATE = #{leadDate,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

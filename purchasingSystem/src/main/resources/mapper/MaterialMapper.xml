@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tuling.purchasingsystem.mapper.MaterialMapper" >
+  <resultMap id="BaseResultMap" type="com.tuling.purchasingsystem.entity.Material" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="MATERIAL_NUM" property="materialNum" jdbcType="VARCHAR" />
+    <result column="MATERIAL_NAME" property="materialName" jdbcType="VARCHAR" />
+    <result column="MATERIAL_UNIT" property="materialUnit" jdbcType="VARCHAR" />
+    <result column="MATERIAL_TYPE" property="materialType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, MATERIAL_NUM, MATERIAL_NAME, MATERIAL_UNIT, MATERIAL_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from material
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from material
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.tuling.purchasingsystem.entity.Material" >
+    insert into material (ID, MATERIAL_NUM, MATERIAL_NAME, 
+      MATERIAL_UNIT, MATERIAL_TYPE)
+    values (#{id,jdbcType=BIGINT}, #{materialNum,jdbcType=VARCHAR}, #{materialName,jdbcType=VARCHAR}, 
+      #{materialUnit,jdbcType=VARCHAR}, #{materialType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tuling.purchasingsystem.entity.Material" >
+    insert into material
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="materialNum != null" >
+        MATERIAL_NUM,
+      </if>
+      <if test="materialName != null" >
+        MATERIAL_NAME,
+      </if>
+      <if test="materialUnit != null" >
+        MATERIAL_UNIT,
+      </if>
+      <if test="materialType != null" >
+        MATERIAL_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="materialNum != null" >
+        #{materialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="materialName != null" >
+        #{materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="materialUnit != null" >
+        #{materialUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="materialType != null" >
+        #{materialType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tuling.purchasingsystem.entity.Material" >
+    update material
+    <set >
+      <if test="materialNum != null" >
+        MATERIAL_NUM = #{materialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="materialName != null" >
+        MATERIAL_NAME = #{materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="materialUnit != null" >
+        MATERIAL_UNIT = #{materialUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="materialType != null" >
+        MATERIAL_TYPE = #{materialType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tuling.purchasingsystem.entity.Material" >
+    update material
+    set MATERIAL_NUM = #{materialNum,jdbcType=VARCHAR},
+      MATERIAL_NAME = #{materialName,jdbcType=VARCHAR},
+      MATERIAL_UNIT = #{materialUnit,jdbcType=VARCHAR},
+      MATERIAL_TYPE = #{materialType,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

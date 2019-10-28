@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tuling.purchasingsystem.mapper.SupplierMapper" >
+  <resultMap id="BaseResultMap" type="com.tuling.purchasingsystem.entity.Supplier" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="SUPPLIER_NUM" property="supplierNum" jdbcType="VARCHAR" />
+    <result column="CERTIFICATE" property="certificate" jdbcType="VARCHAR" />
+    <result column="COMPANY" property="company" jdbcType="VARCHAR" />
+    <result column="KIND" property="kind" jdbcType="VARCHAR" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="FAX" property="fax" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="ZIP" property="zip" jdbcType="VARCHAR" />
+    <result column="REG_FUND" property="regFund" jdbcType="VARCHAR" />
+    <result column="CORPORATION" property="corporation" jdbcType="VARCHAR" />
+    <result column="ACHIEVEMENT" property="achievement" jdbcType="BIGINT" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SUPPLIER_NUM, CERTIFICATE, COMPANY, KIND, CONTACT, PHONE, FAX, EMAIL, ADDRESS, 
+    ZIP, REG_FUND, CORPORATION, ACHIEVEMENT, STATUS, USER_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from supplier
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.tuling.purchasingsystem.entity.Supplier" >
+    insert into supplier (ID, SUPPLIER_NUM, CERTIFICATE, 
+      COMPANY, KIND, CONTACT, 
+      PHONE, FAX, EMAIL, 
+      ADDRESS, ZIP, REG_FUND, 
+      CORPORATION, ACHIEVEMENT, STATUS, 
+      USER_ID)
+    values (#{id,jdbcType=BIGINT}, #{supplierNum,jdbcType=VARCHAR}, #{certificate,jdbcType=VARCHAR}, 
+      #{company,jdbcType=VARCHAR}, #{kind,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{regFund,jdbcType=VARCHAR}, 
+      #{corporation,jdbcType=VARCHAR}, #{achievement,jdbcType=BIGINT}, #{status,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tuling.purchasingsystem.entity.Supplier" >
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="supplierNum != null" >
+        SUPPLIER_NUM,
+      </if>
+      <if test="certificate != null" >
+        CERTIFICATE,
+      </if>
+      <if test="company != null" >
+        COMPANY,
+      </if>
+      <if test="kind != null" >
+        KIND,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="fax != null" >
+        FAX,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="zip != null" >
+        ZIP,
+      </if>
+      <if test="regFund != null" >
+        REG_FUND,
+      </if>
+      <if test="corporation != null" >
+        CORPORATION,
+      </if>
+      <if test="achievement != null" >
+        ACHIEVEMENT,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="supplierNum != null" >
+        #{supplierNum,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null" >
+        #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="kind != null" >
+        #{kind,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="regFund != null" >
+        #{regFund,jdbcType=VARCHAR},
+      </if>
+      <if test="corporation != null" >
+        #{corporation,jdbcType=VARCHAR},
+      </if>
+      <if test="achievement != null" >
+        #{achievement,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tuling.purchasingsystem.entity.Supplier" >
+    update supplier
+    <set >
+      <if test="supplierNum != null" >
+        SUPPLIER_NUM = #{supplierNum,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null" >
+        CERTIFICATE = #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        COMPANY = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="kind != null" >
+        KIND = #{kind,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        CONTACT = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        FAX = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        ZIP = #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="regFund != null" >
+        REG_FUND = #{regFund,jdbcType=VARCHAR},
+      </if>
+      <if test="corporation != null" >
+        CORPORATION = #{corporation,jdbcType=VARCHAR},
+      </if>
+      <if test="achievement != null" >
+        ACHIEVEMENT = #{achievement,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tuling.purchasingsystem.entity.Supplier" >
+    update supplier
+    set SUPPLIER_NUM = #{supplierNum,jdbcType=VARCHAR},
+      CERTIFICATE = #{certificate,jdbcType=VARCHAR},
+      COMPANY = #{company,jdbcType=VARCHAR},
+      KIND = #{kind,jdbcType=VARCHAR},
+      CONTACT = #{contact,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      FAX = #{fax,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      ZIP = #{zip,jdbcType=VARCHAR},
+      REG_FUND = #{regFund,jdbcType=VARCHAR},
+      CORPORATION = #{corporation,jdbcType=VARCHAR},
+      ACHIEVEMENT = #{achievement,jdbcType=BIGINT},
+      STATUS = #{status,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

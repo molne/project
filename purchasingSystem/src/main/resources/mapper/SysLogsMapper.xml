@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tuling.purchasingsystem.mapper.SysLogsMapper" >
+  <resultMap id="BaseResultMap" type="com.tuling.purchasingsystem.entity.SysLogs" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="LOGIN_ID" property="loginId" jdbcType="VARCHAR" />
+    <result column="PRIORITY" property="priority" jdbcType="VARCHAR" />
+    <result column="LOG_DATE" property="logDate" jdbcType="TIMESTAMP" />
+    <result column="CLASS_LOGS" property="classLogs" jdbcType="VARCHAR" />
+    <result column="METHOD" property="method" jdbcType="VARCHAR" />
+    <result column="MSG" property="msg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, LOGIN_ID, PRIORITY, LOG_DATE, CLASS_LOGS, METHOD, MSG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_logs
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_logs
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.tuling.purchasingsystem.entity.SysLogs" >
+    insert into sys_logs (ID, LOGIN_ID, PRIORITY, 
+      LOG_DATE, CLASS_LOGS, METHOD, 
+      MSG)
+    values (#{id,jdbcType=BIGINT}, #{loginId,jdbcType=VARCHAR}, #{priority,jdbcType=VARCHAR}, 
+      #{logDate,jdbcType=TIMESTAMP}, #{classLogs,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, 
+      #{msg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tuling.purchasingsystem.entity.SysLogs" >
+    insert into sys_logs
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="loginId != null" >
+        LOGIN_ID,
+      </if>
+      <if test="priority != null" >
+        PRIORITY,
+      </if>
+      <if test="logDate != null" >
+        LOG_DATE,
+      </if>
+      <if test="classLogs != null" >
+        CLASS_LOGS,
+      </if>
+      <if test="method != null" >
+        METHOD,
+      </if>
+      <if test="msg != null" >
+        MSG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginId != null" >
+        #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=VARCHAR},
+      </if>
+      <if test="logDate != null" >
+        #{logDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classLogs != null" >
+        #{classLogs,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null" >
+        #{msg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tuling.purchasingsystem.entity.SysLogs" >
+    update sys_logs
+    <set >
+      <if test="loginId != null" >
+        LOGIN_ID = #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        PRIORITY = #{priority,jdbcType=VARCHAR},
+      </if>
+      <if test="logDate != null" >
+        LOG_DATE = #{logDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classLogs != null" >
+        CLASS_LOGS = #{classLogs,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        METHOD = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null" >
+        MSG = #{msg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tuling.purchasingsystem.entity.SysLogs" >
+    update sys_logs
+    set LOGIN_ID = #{loginId,jdbcType=VARCHAR},
+      PRIORITY = #{priority,jdbcType=VARCHAR},
+      LOG_DATE = #{logDate,jdbcType=TIMESTAMP},
+      CLASS_LOGS = #{classLogs,jdbcType=VARCHAR},
+      METHOD = #{method,jdbcType=VARCHAR},
+      MSG = #{msg,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
